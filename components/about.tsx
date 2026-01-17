@@ -34,21 +34,7 @@ export default function About() {
           </div>
 
           {/* Stats */}
-          <div className="space-y-6">
-            {[
-              { number: "1", label: "Años Experiencia" },
-              { number: "3", label: "Proyectos Completados" },
-              { number: "3", label: "Clientes Satisfechos" },
-            ].map((stat, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 text-center"
-              >
-                <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+   
         </div>
       </div>
     </section>
