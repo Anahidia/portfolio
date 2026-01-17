@@ -64,7 +64,7 @@ export const projects: Project[] = [
     "/7Diaz-categories.png",
     "/7Diaz-adminencargos.png"
   ],
-  githubUrl: "https://github.com/tu-usuario/tu-repo-ventas",
+  githubUrl: "https://github.com/Anahidia/gestorDeVentas",
 },
 {
   id: "pasantia-nomadride",
