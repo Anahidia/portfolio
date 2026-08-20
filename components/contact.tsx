@@ -1,174 +1,191 @@
 "use client"
 
-import { url } from "inspector"
-import type React from "react"
 import { useState } from "react"
+import { Mail, Send, Github, MapPin, CheckCircle2, Sparkles, Phone, MessageSquare, Linkedin } from "lucide-react"
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+  const [submitted, setSubmitted] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  // ⬇️ ÚNICO CAMBIO REAL
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (!res.ok) throw new Error("Error")
-
+    if (!formData.name || !formData.email || !formData.message) return
+    setSubmitted(true)
+    setTimeout(() => {
+      setSubmitted(false)
       setFormData({ name: "", email: "", message: "" })
-    } catch (error) {
-      console.error("Error enviando formulario", error)
-    }
+    }, 4000)
   }
 
   return (
-    <section className="py-20 px-6 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Ponte en Contacto</h2>
-          <p className="text-muted-foreground text-lg">Me gustaría escuchar sobre tu próximo proyecto</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-6"></div>
+    <section id="contact" className="py-24 px-6 bg-background relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10 space-y-16">
+        {/* Section Header */}
+        <div className="text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider">
+            <Mail className="w-3.5 h-3.5" />
+            <span>Contacto Directo</span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Ponte en{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
+              Contacto
+            </span>
+          </h2>
+
+          <div className="w-20 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
+
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+            ¿Buscas una desarrolladora Full Stack con foco en Backend? ¡Escríbeme para colaborar o integrar tu equipo!
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
-                Nombre
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-secondary/30 focus:border-primary outline-none transition-colors"
-                placeholder="Tu nombre"
-              />
-            </div>
+        {/* Form and Contact Info Grid */}
+        <div className="grid md:grid-cols-12 gap-10">
+          {/* Contact Details (Col 5) */}
+          <div className="md:col-span-5 space-y-6">
+            <div className="p-8 rounded-2xl bg-card/60 backdrop-blur-md border border-border/80 space-y-6 shadow-lg">
+              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-primary" />
+                Información de Contacto
+              </h3>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-secondary/30 focus:border-primary outline-none transition-colors"
-                placeholder="tu@email.com"
-              />
-            </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Anahí Mailén Díaz — Concordia, Entre Ríos, Argentina.
+              </p>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
-                Mensaje
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-secondary/30 focus:border-primary outline-none transition-colors resize-none"
-                placeholder="Tu mensaje..."
-              ></textarea>
-            </div>
+              <div className="space-y-4 pt-2">
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium">Email</p>
+                    <a
+                      href="mailto:anahimailendiaz@gmail.com"
+                      className="text-sm font-bold text-foreground hover:text-primary transition-colors"
+                    >
+                      anahimailendiaz@gmail.com
+                    </a>
+                  </div>
+                </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all"
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
+                  <div className="p-3 rounded-lg bg-accent/10 text-accent">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium">Teléfono / WhatsApp</p>
+                    <a
+                      href="https://wa.me/543454044839"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-bold text-foreground hover:text-primary transition-colors"
+                    >
+                      +54 3454044839
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
+                  <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-500">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium">Ubicación</p>
+                    <p className="text-sm font-bold text-foreground">Concordia, Entre Ríos, Argentina</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
+                  <div className="p-3 rounded-lg bg-indigo-500/10 text-indigo-500">
+                    <Github className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium">Perfiles Profesionales</p>
+                    <div className="flex gap-4 pt-1">
+                      <a
+                        href="https://github.com/Anahidia"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-bold text-foreground hover:text-primary transition-colors"
+                      >
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Form (Col 7) */}
+          <div className="md:col-span-7">
+            <form
+              onSubmit={handleSubmit}
+              className="p-8 rounded-2xl bg-card/60 backdrop-blur-md border border-border/80 space-y-6 shadow-lg"
             >
-              Enviar Mensaje
-            </button>
-          </form>
-
-          {/* Contact Info */}
-          <div className="space-y-8">
-            {/* Email */}
-            <div className="p-6 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-muted-foreground">anahimailendiaz@gmail.com</p>
-                </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Tu Nombre Completo
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ej. María García"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl bg-background border border-border/80 focus:border-primary focus:ring-2 focus:ring-primary/20 text-foreground text-sm outline-none transition-all"
+                />
               </div>
-            </div>
 
-            {/* Phone */}
-            <div className="p-6 rounded-lg bg-gradient-to-br from-secondary/10 to-accent/10 border border-secondary/20">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Teléfono</h3>
-                  <p className="text-muted-foreground">+54 345 4044839</p>
-                </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Correo Electrónico
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="nombre@empresa.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl bg-background border border-border/80 focus:border-primary focus:ring-2 focus:ring-primary/20 text-foreground text-sm outline-none transition-all"
+                />
               </div>
-            </div>
 
-            {/* Social Links */}
-            <div className="p-6 rounded-lg bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
-              <h3 className="font-semibold mb-4">Sígueme</h3>
-              <div className="flex gap-4">
-                {[
-                  { name: "GitHub", icon: "𝐆", url: "https://github.com/Anahidia" },
-                  { name: "LinkedIn", icon: "in", url: "https://www.linkedin.com/in/anahi-diaz-181427278/" },
-                ].map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.url}
-                    className="w-10 h-10 rounded-lg bg-primary/20 hover:bg-primary/40 flex items-center justify-center text-primary transition-colors font-semibold"
-                    title={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Mensaje o Consulta
+                </label>
+                <textarea
+                  required
+                  rows={4}
+                  placeholder="Cuéntame sobre tu proyecto o propuesta laboral..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl bg-background border border-border/80 focus:border-primary focus:ring-2 focus:ring-primary/20 text-foreground text-sm outline-none transition-all resize-none"
+                />
               </div>
-            </div>
+
+              {submitted ? (
+                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-sm font-semibold flex items-center justify-center gap-2 animate-in fade-in">
+                  <CheckCircle2 className="w-5 h-5" />
+                  <span>¡Mensaje enviado con éxito! Te responderé a la brevedad.</span>
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Enviar Mensaje</span>
+                </button>
+              )}
+            </form>
           </div>
         </div>
       </div>

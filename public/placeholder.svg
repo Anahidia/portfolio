@@ -1,0 +1,16 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#030014"/>
+  <rect width="800" height="450" fill="url(#paint0_linear)"/>
+  <circle cx="400" cy="225" r="120" fill="#8B5CF6" fill-opacity="0.15" filter="blur(40px)"/>
+  <path d="M400 175L435 210L400 245L365 210L400 175Z" stroke="#A855F7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M400 245V275" stroke="#A855F7" stroke-width="4" stroke-linecap="round"/>
+  <text x="400" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#94A3B8" text-anchor="middle" letter-spacing="2">UCONNECT</text>
+  <text x="400" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">Software de Gestión Hotelera &amp; IA</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F0A23"/>
+      <stop offset="0.5" stop-color="#030014"/>
+      <stop offset="1" stop-color="#1A0B2E"/>
+    </linearGradient>
+  </defs>
+</svg>

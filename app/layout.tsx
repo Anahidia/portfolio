@@ -8,26 +8,8 @@ const inter = Inter({ subsets: ["latin"] })
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Portafolio - Desarrollador Full Stack",
-  description: "Portafolio profesional de desarrollador web full stack especializado en tecnologías modernas",
-  generator: "v0.app",
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
+  title: "Anahí Mailén Díaz | Full Stack Developer",
+  description: "Portafolio profesional de Anahí Mailén Díaz, desarrolladora Full Stack (Backend-focused) en NestJS, React, Next.js e Inteligencia Artificial.",
 }
 
 export default function RootLayout({
@@ -37,6 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+      </head>
       <body className={`${inter.className} font-sans antialiased`}>
         {children}
         <Analytics />
