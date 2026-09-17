@@ -13,7 +13,70 @@ export interface Project {
 }
 
 export const projects: Project[] = [
- 
+  {
+    id: "uconnect-sistema-gestion-hotelera",
+    title: "UConnect – Sistema de Gestión Hotelera & Automatización IA",
+    description:
+      "Plataforma integral de gestión hotelera (NestJS, MongoDB, Next.js, Redux, Tailwind) con automatización de reservas por WhatsApp mediante n8n e IA, canal ético, fichaje laboral y control de operaciones.",
+    fullDescription:
+      "Sistema completo de gestión hotelera y automatización de operaciones diarias desarrollado Fullstack.\n\n" +
+      "Características Técnicas & Módulos:\n" +
+      "• Gestión Operativa & Habitaciones: Control de habitaciones, estado, inventario, productos, pedidos, incidencias y mantenimiento del hotel.\n" +
+      "• Recursos Humanos & Fichaje: Módulo de registro laboral, fichaje de personal, gestión de turnos/cuadrantes, horarios, solicitudes de días libres, certificados y legajos documentales.\n" +
+      "• Canal Ético & Encuestas: Módulo seguro para recepción y tratamiento de denuncias internas (Canal Ético) y encuestas de satisfacción.\n" +
+      "• Automatización WhatsApp con n8n e IA: Integración de flujo inteligente para reservas y atención automatizada de huéspedes interconectado con backend en NestJS y MongoDB.\n" +
+      "• Paneles de Control (Admin & Empleados): Dashboards dinámicos e intuitivos para administración estratégica y vistas simplificadas para colaboradores.",
+    technologies: [
+      "NestJS",
+      "TypeScript",
+      "MongoDB",
+      "n8n",
+      "OpenAI / IA",
+      "Next.js",
+      "React",
+      "Redux",
+      "Tailwind CSS"
+    ],
+    image: "/UConnect/panelDeControl.png",
+    gallery: [
+      "/UConnect/panelDeControl.png",
+      "/UConnect/panelDeControl-2.png",
+      "/UConnect/inicioEmpleado.png",
+      "/UConnect/gestionHabitacion.png",
+      "/UConnect/habitacionForm.png",
+      "/UConnect/registroLaboral.png",
+      "/UConnect/reporteEntrada.png",
+      "/UConnect/cuadranteLaboral.png",
+      "/UConnect/cuadranteLaboralPersonal.png",
+      "/UConnect/horariosForm.png",
+      "/UConnect/incidencias.png",
+      "/UConnect/incidenciaForm.png",
+      "/UConnect/inventario.png",
+      "/UConnect/inventarioForm.png",
+      "/UConnect/pedidos.png",
+      "/UConnect/productoForm.png",
+      "/UConnect/canalEtico.png",
+      "/UConnect/denunciaForm.png",
+      "/UConnect/noticias.png",
+      "/UConnect/noticiasForm.png",
+      "/UConnect/noticiaPrevisual.png",
+      "/UConnect/encuestas.png",
+      "/UConnect/encuestaForm.png",
+      "/UConnect/certificados.png",
+      "/UConnect/certificadosForm.png",
+      "/UConnect/documentacion.png",
+      "/UConnect/documentacionForm.png",
+      "/UConnect/cierreDeCajaForm.png",
+      "/UConnect/solicitudDiaLibre.png",
+      "/UConnect/diaLibreForm.png",
+      "/UConnect/loguin.png",
+      "/UConnect/register.png",
+      "/UConnect/RegisterAdmin.png",
+      "/UConnect/registerEmpleado.png"
+    ],
+    featured: true,
+    category: "Fullstack"
+  },
   {
     id: "convertidor-markdown-html-regex",
     title: "Convertidor Markdown a HTML con Regex (Python)",
@@ -36,13 +99,13 @@ export const projects: Project[] = [
       "Tailwind CSS",
       "Pytest"
     ],
-    image: "/Convertidor Markdown → HTML-principal.png",
+    image: "/convertidorMarkdown/Convertidor Markdown → HTML-principal.png",
     gallery: [
-      "/Convertidor Markdown → HTML-principal.png",
-      "/Convertidor Markdown → HTML- diferente estilos.png",
-      "/Convertidor Markdown → HTML-codigo HTML.png",
-      "/Convertidor Markdown → HTML-css personalizado.png",
-      "/Convertidor Markdown → HTML-desplegable.png"
+      "/convertidorMarkdown/Convertidor Markdown → HTML-principal.png",
+      "/convertidorMarkdown/Convertidor Markdown → HTML- diferente estilos.png",
+      "/convertidorMarkdown/Convertidor Markdown → HTML-codigo HTML.png",
+      "/convertidorMarkdown/Convertidor Markdown → HTML-css personalizado.png",
+      "/convertidorMarkdown/Convertidor Markdown → HTML-desplegable.png"
     ],
     featured: true,
     githubUrl: "https://github.com/Anahidia/Convertidor-Markdown-HTML",
@@ -68,14 +131,14 @@ export const projects: Project[] = [
       "Framer Motion",
       "Lucide Icons"
     ],
-    image: "/ClimaSync-dialluvia.png",
+    image: "/climaSync/ClimaSync-dialluvia.png",
     gallery: [
-      "/ClimaSync-dialluvia.png",
-      "/ClimaSync-lluviaDetalles.png",
-      "/ClimaSync-diaSol.png",
-      "/ClimaSync-diaSolDetalles.png"
+      "/climaSync/ClimaSync-dialluvia.png",
+      "/climaSync/ClimaSync-lluviaDetalles.png",
+      "/climaSync/ClimaSync-diaSol.png",
+      "/climaSync/ClimaSync-diaSolDetalles.png"
     ],
-    githubUrl:"https://github.com/Anahidia/climaSync",
+    githubUrl: "https://github.com/Anahidia/climaSync",
     featured: true,
     category: "Fullstack"
   },
@@ -104,38 +167,38 @@ export const projects: Project[] = [
       "Class Validator",
       "Tailwind CSS"
     ],
-    image: "/FullStore-layout.png",
+    image: "/fullStore/FullStore-layout.png",
     gallery: [
-      "/FullStore-layout.png",
-      "/FullStore-layout2.png",
-      "/FullStore-login.png",
-      "/FullStore-invetario.png",
-      "/FullStore-preducts.png",
-      "/FullStore-ventas.png",
-      "/FullStore-AdminDashboard.png",
-      "/FullStore-VentasPage.png",
-      "/FullStore-categoria.png",
-      "/FullStore-crearCategoria.png",
-      "/FullStore-crearProduct.png",
-      "/FullStore-crearProduct2.png",
-      "/FullStore-crearProduct3.png",
-      "/FullStore-productCreado.png",
-      "/FullStore-registerAdmin.png",
-      "/FullStore-registerAdmin2.png",
-      "/FullStore-dashboar2.png",
-      "/FullStore-dashboard3.png",
-      "/FullStore-empleado.png",
-      "/FullStore-empleadoPageVenta.png",
-      "/FullStore-empleado-carritoDeCompras.png",
-      "/FullStore-empleadoVentaCompleta.png",
-      "/FullStore-empleado-ventasyDevolucion.png",
-      "/FullStore-empleadoFiltros.png",
-      "/FullStore-empleado-encargos.png",
-      "/FullStore-empleado-encargosCompletados.png",
-      "/FullStore-empleado-encargosPage.png",
-      "/FullStore-empleadoencargso2.png",
-      "/FullStore-empleado-cierreDeCaja.png",
-      "/FullStore-empleado-fichaje.png"
+      "/fullStore/FullStore-layout.png",
+      "/fullStore/FullStore-layout2.png",
+      "/fullStore/FullStore-login.png",
+      "/fullStore/FullStore-invetario.png",
+      "/fullStore/FullStore-preducts.png",
+      "/fullStore/FullStore-ventas.png",
+      "/fullStore/FullStore-AdminDashboard.png",
+      "/fullStore/FullStore-VentasPage.png",
+      "/fullStore/FullStore-categoria.png",
+      "/fullStore/FullStore-crearCategoria.png",
+      "/fullStore/FullStore-crearProduct.png",
+      "/fullStore/FullStore-crearProduct2.png",
+      "/fullStore/FullStore-crearProduct3.png",
+      "/fullStore/FullStore-productCreado.png",
+      "/fullStore/FullStore-registerAdmin.png",
+      "/fullStore/FullStore-registerAdmin2.png",
+      "/fullStore/FullStore-dashboar2.png",
+      "/fullStore/FullStore-dashboard3.png",
+      "/fullStore/FullStore-empleado.png",
+      "/fullStore/FullStore-empleadoPageVenta.png",
+      "/fullStore/FullStore-empleado-carritoDeCompras.png",
+      "/fullStore/FullStore-empleadoVentaCompleta.png",
+      "/fullStore/FullStore-empleado-ventasyDevolucion.png",
+      "/fullStore/FullStore-empleadoFiltros.png",
+      "/fullStore/FullStore-empleado-encargos.png",
+      "/fullStore/FullStore-empleado-encargosCompletados.png",
+      "/fullStore/FullStore-empleado-encargosPage.png",
+      "/fullStore/FullStore-empleadoencargso2.png",
+      "/fullStore/FullStore-empleado-cierreDeCaja.png",
+      "/fullStore/FullStore-empleado-fichaje.png"
     ],
     githubUrl: "https://github.com/Anahidia/gestorDeVentas",
     featured: true,
@@ -165,14 +228,15 @@ export const projects: Project[] = [
       "Stripe",
       "Tailwind CSS"
     ],
-    image: "/gimHome.png",
+    image: "/gym/gimHome.png",
     gallery: [
-      "/gimHome.png",
-      "/gimLogin.png",
-      "/gimRegis.png",
-      "/gimClasList.png",
-      "/gimClass.png",
-      "/gimStripe.png"
+      "/gym/gimHome.png",
+      "/gym/gimLogin.png",
+      "/gym/gimRegis.png",
+      "/gym/gimClasList.png",
+      "/gym/gimClass.png",
+      "/gym/gimStripe.png",
+      "/gym/gimChat.png"
     ],
     githubUrl: "https://github.com/abogadatos/JustDoIt-Gym-Management-system",
     featured: false,
