@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Home as HomeIcon, User, Briefcase, FolderGit2, Mail, Menu, X, Sparkles } from "lucide-react"
+import JumpText from "./ui/jump-text"
 
 interface NavigationProps {
   activeSection: string
@@ -19,6 +20,9 @@ const navItems = [
 export default function Navigation({ activeSection, setActiveSection }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 })
+  const navContainerRef = useRef<HTMLDivElement>(null)
+  const itemRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +45,26 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [setActiveSection])
+
+  // Update Electric Nav indicator position when activeSection changes or window resizes
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeEl = itemRefs.current.get(activeSection)
+      const container = navContainerRef.current
+      if (activeEl && container) {
+        const containerRect = container.getBoundingClientRect()
+        const activeRect = activeEl.getBoundingClientRect()
+        setIndicatorStyle({
+          left: activeRect.left - containerRect.left,
+          width: activeRect.width,
+        })
+      }
+    }
+
+    updateIndicator()
+    window.addEventListener("resize", updateIndicator)
+    return () => window.removeEventListener("resize", updateIndicator)
+  }, [activeSection])
 
   const handleNavClick = (id: string) => {
     const element = document.getElementById(id)
@@ -70,13 +94,28 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
               <Sparkles className="w-4 h-4 text-primary group-hover:rotate-12 transition-transform" />
             </div>
           </div>
-          <span>
-            Anahí<span className="text-primary font-bold">.Dev</span>
+          <span className="flex items-center">
+            <JumpText text="Anahí" />
+            <span className="text-primary font-bold ml-1">.Dev</span>
           </span>
         </button>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-1 bg-secondary/20 backdrop-blur-sm p-1.5 rounded-full border border-border/50">
+        {/* Desktop Links with Electric Nav */}
+        <div
+          ref={navContainerRef}
+          className="hidden md:flex relative items-center gap-1 bg-secondary/20 backdrop-blur-sm p-1.5 rounded-full border border-border/50"
+        >
+          {/* Electric Arc Indicator */}
+          {indicatorStyle.width > 0 && (
+            <div
+              className="electric-arc-indicator"
+              style={{
+                left: `${indicatorStyle.left}px`,
+                width: `${indicatorStyle.width}px`,
+              }}
+            />
+          )}
+
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = activeSection === item.id
@@ -84,15 +123,19 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
             return (
               <button
                 key={item.id}
+                ref={(el) => {
+                  if (el) itemRefs.current.set(item.id, el)
+                  else itemRefs.current.delete(item.id)
+                }}
                 onClick={() => handleNavClick(item.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 relative z-10 ${
                   isActive
-                    ? "bg-primary text-primary-foreground shadow-md shadow-primary/25 font-semibold"
+                    ? "bg-primary/90 text-primary-foreground shadow-md shadow-primary/25 font-semibold"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
                 }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                <span>{item.label}</span>
+                <JumpText text={item.label} />
               </button>
             )
           })}
@@ -121,14 +164,14 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${
+                className={`group w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${
                   isActive
                     ? "bg-primary text-primary-foreground font-semibold"
                     : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
                 }`}
               >
                 <Icon className="w-5 h-5" />
-                <span>{item.label}</span>
+                <JumpText text={item.label} />
               </button>
             )
           })}

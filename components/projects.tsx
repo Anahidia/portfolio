@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { projects, Project } from "../lib/projects-data"
 import { FolderGit2, ExternalLink, Github, Sparkles, ArrowUpRight, Code2, Tag } from "lucide-react"
+import JumpText from "./ui/jump-text"
 
 const categories = ["Todos", "Fullstack", "Backend", "Frontend", "Python / AI"]
 
@@ -48,13 +49,13 @@ export default function Projects() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+              className={`group px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 selectedCategory === cat
                   ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105"
                   : "bg-card border border-border/70 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-secondary/40"
               }`}
             >
-              {cat}
+              <JumpText text={cat} />
             </button>
           ))}
         </div>
@@ -132,10 +133,10 @@ export default function Projects() {
               <div className="px-6 pb-6 pt-2">
                 <Link
                   href={`/projects/${project.id}`}
-                  className="group/btn w-full py-3 rounded-xl bg-secondary/40 hover:bg-primary border border-border/80 hover:border-primary text-foreground hover:text-primary-foreground font-semibold transition-all duration-300 text-center flex items-center justify-center gap-2 shadow-xs"
+                  className="group w-full py-3 rounded-xl bg-secondary/40 hover:bg-primary border border-border/80 hover:border-primary text-foreground hover:text-primary-foreground font-semibold transition-all duration-300 text-center flex items-center justify-center gap-2 shadow-xs"
                 >
-                  <span>Ver Detalle del Proyecto</span>
-                  <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  <JumpText text="Ver Detalle del Proyecto" />
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
               </div>
             </div>

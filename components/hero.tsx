@@ -1,6 +1,7 @@
 "use client"
 
 import { Sparkles, ArrowRight, Github, Mail, FolderGit2, Terminal, Code2, Cpu, MapPin, Phone } from "lucide-react"
+import JumpText from "./ui/jump-text"
 
 interface HeroProps {
   setActiveSection: (section: string) => void
@@ -76,16 +77,16 @@ export default function Hero({ setActiveSection }: HeroProps) {
               className="group px-7 py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
-              <span>Contáctame</span>
+              <JumpText text="Contáctame" />
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
               onClick={handleProjectsClick}
-              className="px-7 py-3.5 rounded-xl bg-card border border-border hover:border-primary/50 text-foreground font-semibold hover:bg-secondary/40 hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              className="group px-7 py-3.5 rounded-xl bg-card border border-border hover:border-primary/50 text-foreground font-semibold hover:bg-secondary/40 hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
               <FolderGit2 className="w-4 h-4 text-primary" />
-              <span>Ver Proyectos</span>
+              <JumpText text="Ver Proyectos" />
             </button>
 
             <a

@@ -1,20 +1,49 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Send, Github, MapPin, CheckCircle2, Sparkles, Phone, MessageSquare, Linkedin } from "lucide-react"
+import { Mail, Send, Github, MapPin, CheckCircle2, Sparkles, Phone, Loader2, AlertCircle } from "lucide-react"
+import JumpText from "./ui/jump-text"
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.name || !formData.email || !formData.message) return
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: "", email: "", message: "" })
-    }, 4000)
+
+    setIsSubmitting(true)
+    setErrorMsg("")
+    setSubmitted(false)
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (res.ok && data.success) {
+        setSubmitted(true)
+        setFormData({ name: "", email: "", message: "" })
+        setTimeout(() => {
+          setSubmitted(false)
+        }, 6000)
+      } else {
+        setErrorMsg(data.error || "Hubo un problema al enviar el mensaje.")
+      }
+    } catch (err) {
+      console.error(err)
+      setErrorMsg("Error de red o conexión al enviar el mensaje.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -171,18 +200,37 @@ export default function Contact() {
                 />
               </div>
 
-              {submitted ? (
+              {submitted && (
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-sm font-semibold flex items-center justify-center gap-2 animate-in fade-in">
                   <CheckCircle2 className="w-5 h-5" />
-                  <span>¡Mensaje enviado con éxito! Te responderé a la brevedad.</span>
+                  <span>¡Mensaje enviado con éxito a anahimailendiaz@gmail.com! Te responderé a la brevedad.</span>
                 </div>
-              ) : (
+              )}
+
+              {errorMsg && (
+                <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/30 text-destructive text-sm font-semibold flex items-center justify-center gap-2 animate-in fade-in">
+                  <AlertCircle className="w-5 h-5" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
+              {!submitted && (
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="group w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Enviar Mensaje</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Enviando correo...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
+                      <JumpText text="Enviar Mensaje" />
+                    </>
+                  )}
                 </button>
               )}
             </form>
