@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Send, Github, MapPin, CheckCircle2, Sparkles, Phone, Loader2, AlertCircle } from "lucide-react"
-import JumpText from "./ui/jump-text"
+import { ArrowRight, Mail, Phone, MapPin, Github, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
@@ -40,155 +39,108 @@ export default function Contact() {
       }
     } catch (err) {
       console.error(err)
-      setErrorMsg("Error de red o conexión al enviar el mensaje.")
+      setErrorMsg("Error de conexión al enviar el mensaje.")
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <section id="contact" className="py-24 px-6 bg-background relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto relative z-10 space-y-16">
+    <section id="contact" className="pt-20 md:pt-28 pb-12 px-6 bg-white border-t border-zinc-100">
+      <div className="max-w-6xl mx-auto space-y-16">
         {/* Section Header */}
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider">
-            <Mail className="w-3.5 h-3.5" />
-            <span>Contacto Directo</span>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Ponte en{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
-              Contacto
-            </span>
-          </h2>
-
-          <div className="w-20 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
-
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            ¿Buscas una desarrolladora Full Stack con foco en Backend? ¡Escríbeme para colaborar o integrar tu equipo!
-          </p>
+        <div className="text-xs font-mono tracking-wider">
+          <span className="text-[#991b1b] font-semibold">04 / CONTACTO</span>
         </div>
 
-        {/* Form and Contact Info Grid */}
-        <div className="grid md:grid-cols-12 gap-10">
-          {/* Contact Details (Col 5) */}
-          <div className="md:col-span-5 space-y-6">
-            <div className="p-8 rounded-2xl bg-card/60 backdrop-blur-md border border-border/80 space-y-6 shadow-lg">
-              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-primary" />
-                Información de Contacto
-              </h3>
+        {/* Contact Grid: Heading & Info on Left, Clean Form on Right */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column (Col 5) */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-900 font-mono leading-tight">
+                ¿Construimos algo juntos?
+              </h2>
 
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Anahí Mailén Díaz — Concordia, Entre Ríos, Argentina.
+              <p className="text-zinc-600 text-base md:text-lg">
+                Abierta a roles Backend / Full Stack y nuevos proyectos.
               </p>
+            </div>
 
-              <div className="space-y-4 pt-2">
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground font-medium">Email</p>
-                    <a
-                      href="mailto:anahimailendiaz@gmail.com"
-                      className="text-sm font-bold text-foreground hover:text-primary transition-colors"
-                    >
-                      anahimailendiaz@gmail.com
-                    </a>
-                  </div>
-                </div>
+            {/* Quick Contact Information */}
+            <div className="space-y-3.5 pt-2 font-mono text-xs">
+              <a
+                href="mailto:anahimailendiaz@gmail.com"
+                className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200/80 bg-zinc-50/60 hover:bg-zinc-100/80 hover:border-zinc-300 text-zinc-700 transition-colors"
+              >
+                <Mail className="w-4 h-4 text-[#991b1b] shrink-0" />
+                <span className="truncate">anahimailendiaz@gmail.com</span>
+              </a>
 
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
-                  <div className="p-3 rounded-lg bg-accent/10 text-accent">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground font-medium">Teléfono / WhatsApp</p>
-                    <a
-                      href="https://wa.me/543454044839"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-bold text-foreground hover:text-primary transition-colors"
-                    >
-                      +54 3454044839
-                    </a>
-                  </div>
-                </div>
+              <a
+                href="https://wa.me/543454044839"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200/80 bg-zinc-50/60 hover:bg-zinc-100/80 hover:border-zinc-300 text-zinc-700 transition-colors"
+              >
+                <Phone className="w-4 h-4 text-[#991b1b] shrink-0" />
+                <span>+54 3454044839 (WhatsApp)</span>
+              </a>
 
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
-                  <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-500">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground font-medium">Ubicación</p>
-                    <p className="text-sm font-bold text-foreground">Concordia, Entre Ríos, Argentina</p>
-                  </div>
-                </div>
+              <a
+                href="https://github.com/Anahidia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200/80 bg-zinc-50/60 hover:bg-zinc-100/80 hover:border-zinc-300 text-zinc-700 transition-colors"
+              >
+                <Github className="w-4 h-4 text-[#991b1b] shrink-0" />
+                <span>github.com/Anahidia</span>
+              </a>
 
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50">
-                  <div className="p-3 rounded-lg bg-indigo-500/10 text-indigo-500">
-                    <Github className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground font-medium">Perfiles Profesionales</p>
-                    <div className="flex gap-4 pt-1">
-                      <a
-                        href="https://github.com/Anahidia"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-bold text-foreground hover:text-primary transition-colors"
-                      >
-                        GitHub
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              <div className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200/80 bg-zinc-50/60 text-zinc-600">
+                <MapPin className="w-4 h-4 text-zinc-400 shrink-0" />
+                <span>Concordia, Entre Ríos, Argentina</span>
               </div>
             </div>
           </div>
 
-          {/* Interactive Form (Col 7) */}
-          <div className="md:col-span-7">
+          {/* Right Column: Clean Form (Col 7) */}
+          <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
-              className="p-8 rounded-2xl bg-card/60 backdrop-blur-md border border-border/80 space-y-6 shadow-lg"
+              className="p-6 md:p-8 rounded-2xl border border-zinc-200/90 bg-zinc-50/60 shadow-2xs space-y-5"
             >
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Tu Nombre Completo
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-medium">
+                  Nombre
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder="Ej. María García"
+                  placeholder="Tu nombre completo"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-background border border-border/80 focus:border-primary focus:ring-2 focus:ring-primary/20 text-foreground text-sm outline-none transition-all"
+                  className="w-full px-4 py-2.5 rounded-lg bg-white border border-zinc-200 focus:border-[#991b1b] focus:ring-1 focus:ring-[#991b1b] text-zinc-900 text-sm outline-none transition-all placeholder:text-zinc-400"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Correo Electrónico
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-medium">
+                  Email
                 </label>
                 <input
                   type="email"
                   required
-                  placeholder="nombre@empresa.com"
+                  placeholder="tu@correo.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-background border border-border/80 focus:border-primary focus:ring-2 focus:ring-primary/20 text-foreground text-sm outline-none transition-all"
+                  className="w-full px-4 py-2.5 rounded-lg bg-white border border-zinc-200 focus:border-[#991b1b] focus:ring-1 focus:ring-[#991b1b] text-zinc-900 text-sm outline-none transition-all placeholder:text-zinc-400"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Mensaje o Consulta
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono uppercase tracking-wider text-zinc-500 font-medium">
+                  Mensaje
                 </label>
                 <textarea
                   required
@@ -196,46 +148,50 @@ export default function Contact() {
                   placeholder="Cuéntame sobre tu proyecto o propuesta laboral..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-background border border-border/80 focus:border-primary focus:ring-2 focus:ring-primary/20 text-foreground text-sm outline-none transition-all resize-none"
+                  className="w-full px-4 py-2.5 rounded-lg bg-white border border-zinc-200 focus:border-[#991b1b] focus:ring-1 focus:ring-[#991b1b] text-zinc-900 text-sm outline-none transition-all placeholder:text-zinc-400 resize-none"
                 />
               </div>
 
               {submitted && (
-                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-sm font-semibold flex items-center justify-center gap-2 animate-in fade-in">
-                  <CheckCircle2 className="w-5 h-5" />
-                  <span>¡Mensaje enviado con éxito a anahimailendiaz@gmail.com! Te responderé a la brevedad.</span>
+                <div className="p-3.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs md:text-sm font-medium flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>¡Mensaje enviado con éxito! Me comunicaré contigo a la brevedad.</span>
                 </div>
               )}
 
               {errorMsg && (
-                <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/30 text-destructive text-sm font-semibold flex items-center justify-center gap-2 animate-in fade-in">
-                  <AlertCircle className="w-5 h-5" />
+                <div className="p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs md:text-sm font-medium flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
                   <span>{errorMsg}</span>
                 </div>
               )}
 
-              {!submitted && (
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Enviando correo...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
-                      <JumpText text="Enviar Mensaje" />
-                    </>
-                  )}
-                </button>
-              )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-[#991b1b] hover:bg-[#7f1d1d] text-white font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 disabled:opacity-50"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Enviando mensaje...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Escribime</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
+              </button>
             </form>
           </div>
         </div>
+
+        {/* Footer (Screenshot 5) */}
+        <footer className="border-t border-zinc-200 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+          <p>© 2026 Anahí Mailén Díaz</p>
+          <p>Hecho con intención, no con magia.</p>
+        </footer>
       </div>
     </section>
   )

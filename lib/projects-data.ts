@@ -1,7 +1,11 @@
 export interface Project {
   id: string
   title: string
+  shortTitle?: string
+  tagLine?: string
+  numberCode?: string
   description: string
+  shortDescription?: string
   fullDescription: string
   technologies: string[]
   image: string
@@ -16,6 +20,10 @@ export const projects: Project[] = [
   {
     id: "uconnect-sistema-gestion-hotelera",
     title: "UConnect – Sistema de Gestión Hotelera & Automatización IA",
+    shortTitle: "UConnect",
+    tagLine: "Gestión hotelera · Full Stack",
+    numberCode: "/01",
+    shortDescription: "Gestión hotelera centralizada. Operaciones, equipos y reservas por WhatsApp en un solo lugar.",
     description:
       "Plataforma integral de gestión hotelera (NestJS, MongoDB, Next.js, Redux, Tailwind) con automatización de reservas por WhatsApp mediante n8n e IA, canal ético, fichaje laboral y control de operaciones.",
     fullDescription:
@@ -80,6 +88,10 @@ export const projects: Project[] = [
   {
     id: "convertidor-markdown-html-regex",
     title: "Convertidor Markdown a HTML con Regex (Python)",
+    shortTitle: "Markdown → HTML",
+    tagLine: "Procesamiento de texto · Python",
+    numberCode: "/02",
+    shortDescription: "Un motor de conversión construido con expresiones regulares y una interfaz de edición en tiempo real.",
     description:
       "Herramienta web con motor custom en Python (FastAPI) basado exclusivamente en Expresiones Regulares para convertir Markdown a HTML con editor CSS y vista previa en vivo.",
     fullDescription:
@@ -114,13 +126,17 @@ export const projects: Project[] = [
   {
     id: "app-clima-mascota-naranjito",
     title: "App de Clima con Mascota Animada 'Naranjito'",
+    shortTitle: "Clima con Naranjito",
+    tagLine: "Aplicación meteorológica · Frontend",
+    numberCode: "/03",
+    shortDescription: "El pronóstico del tiempo, con una mascota que reacciona a las condiciones meteorológicas.",
     description:
       "Aplicación meteorológica interactiva con un personaje gatuno SVG/CSS que reacciona al clima actual, pronóstico expandible de 7 días y score de aptitud para salir a correr.",
     fullDescription:
       "Aplicación de clima interactiva que combina precisión en datos meteorológicos con una experiencia visual dinámica y amigable.\n\n" +
       "Puntos Clave del Proyecto:\n" +
       "• Mascota Dinámica 'Naranjito': Personaje gatuno en SVG/CSS animado que reacciona en tiempo real según el estado del clima (sol con gafas, lluvia con paraguas, nube mullida, nieve con gorro, tormenta con rayos, noche con luna).\n" +
-      "• Pronóstico Interactivo de 7 Días: Tarjetas expandibles con animaciones Framer Motion que despliegan detalles de temperatura por hora, precipitación, viento, índice UV y recomendación para salir a entrenar (Running Fitness Score).\n" +
+      "• Pronóstico Interactivo de 7 Días: Tarjetas expandibles con animaciones que despliegan detalles de temperatura por hora, precipitación, viento, índice UV y recomendación para salir a entrenar (Running Fitness Score).\n" +
       "• Integración Decoupled: Backend en Python (FastAPI) para consumir APIs meteorológicas y calcular aptitud deportiva + Frontend en Next.js con Tailwind CSS y Lucide Icons.",
     technologies: [
       "Next.js",
@@ -128,7 +144,6 @@ export const projects: Project[] = [
       "Python",
       "FastAPI",
       "Tailwind CSS",
-      "Framer Motion",
       "Lucide Icons"
     ],
     image: "/climaSync/ClimaSync-dialluvia.png",
@@ -140,11 +155,15 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/Anahidia/climaSync",
     featured: true,
-    category: "Fullstack"
+    category: "Frontend"
   },
   {
     id: "sistema-gestion-ventas",
     title: "FullStore – Sistema de Gestión de Ventas & E-commerce App",
+    shortTitle: "FullStore",
+    tagLine: "E-commerce & POS · Full Stack",
+    numberCode: "/04",
+    shortDescription: "Sistema de ventas y e-commerce con NestJS, PostgreSQL, autenticación, control de stock y fichaje.",
     description:
       "Aplicación de e-commerce y gestión de ventas Fullstack con NestJS, TypeORM, PostgreSQL y Next.js. Incluye roles de usuario/admin, Cloudinary, fichaje de empleados y devoluciones.",
     fullDescription:
@@ -164,7 +183,6 @@ export const projects: Project[] = [
       "Cloudinary",
       "JWT",
       "bcrypt",
-      "Class Validator",
       "Tailwind CSS"
     ],
     image: "/fullStore/FullStore-layout.png",
@@ -207,6 +225,10 @@ export const projects: Project[] = [
   {
     id: "sistema-gestion-gimnasio",
     title: "Gym JustDoIt App – Sistema de Gestión de Gimnasios",
+    shortTitle: "JustDoIt Gym",
+    tagLine: "Reservas & Membresías · Backend",
+    numberCode: "/05",
+    shortDescription: "Gestión integral de clases, cupos en tiempo real, entrenadores y pagos con Stripe.",
     description:
       "Sistema backend y frontend para la administración de clases, reservas con manejo de cupos, membresías, entrenadores y pasarela de pagos con Stripe.",
     fullDescription:
@@ -245,6 +267,10 @@ export const projects: Project[] = [
   {
     id: "pasantia-nomadride",
     title: "Pasantía Full Stack – Nomad Ride",
+    shortTitle: "Nomad Ride",
+    tagLine: "Alquiler de vehículos · Full Stack",
+    numberCode: "/06",
+    shortDescription: "Plataforma de alquiler de vehículos para nómades digitales construida con Next.js y Firebase.",
     description:
       "Plataforma de alquiler de vehículos desarrollada en Next.js, React, TypeScript y Tailwind CSS con autenticación y almacenamiento en Firebase.",
     fullDescription:
@@ -262,6 +288,10 @@ export const projects: Project[] = [
   {
     id: "pasantia-whaber",
     title: "Pasantía Full Stack – Whaber",
+    shortTitle: "Whaber",
+    tagLine: "Plataforma SaaS · Frontend",
+    numberCode: "/07",
+    shortDescription: "Mantenimiento, desarrollo de componentes en React y optimización de flujos de trabajo.",
     description:
       "Mantenimiento, desarrollo de componentes en React y resolución de bugs en plataforma tecnológica.",
     fullDescription:

@@ -1,20 +1,17 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Home as HomeIcon, User, Briefcase, FolderGit2, Mail, Menu, X, Sparkles } from "lucide-react"
-import JumpText from "./ui/jump-text"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 
 interface NavigationProps {
   activeSection: string
   setActiveSection: (section: string) => void
 }
 
-const navItems = [
-  { id: "home", label: "Inicio", icon: HomeIcon },
-  { id: "about", label: "Sobre mí", icon: User },
-  { id: "experience", label: "Experiencia", icon: Briefcase },
-  { id: "projects", label: "Proyectos", icon: FolderGit2 },
-  { id: "contact", label: "Contacto", icon: Mail },
+const navLinks = [
+  { id: "projects", label: "Proyectos" },
+  { id: "about", label: "Sobre mí" },
+  { id: "experience", label: "Experiencia" },
 ]
 
 export default function Navigation({ activeSection, setActiveSection }: NavigationProps) {
@@ -23,10 +20,9 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30)
+      setIsScrolled(window.scrollY > 20)
 
-      // Auto update active section based on scroll position
-      const sections = navItems.map((item) => item.id)
+      const sections = ["home", "projects", "about", "experience", "contact"]
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId)
         if (element) {
@@ -43,7 +39,7 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
     return () => window.removeEventListener("scroll", handleScroll)
   }, [setActiveSection])
 
-  const handleNavClick = (id: string) => {
+  const scrollTo = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
@@ -53,89 +49,90 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
   }
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-lg border-b border-border/60 py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/90 backdrop-blur-md border-b border-zinc-200 py-3 shadow-xs"
+          : "bg-white/60 backdrop-blur-xs py-4 md:py-5 border-b border-zinc-100"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        {/* Brand Logo */}
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        {/* Brand Logo: [a.] anahí /dev */}
         <button
-          onClick={() => handleNavClick("home")}
-          className="group flex items-center gap-2 text-2xl font-black text-foreground hover:text-primary transition-colors focus:outline-none"
+          onClick={() => scrollTo("home")}
+          className="flex items-center gap-2.5 text-base font-bold text-zinc-900 group focus:outline-none"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-primary to-accent p-0.5 shadow-md group-hover:scale-105 transition-transform">
-            <div className="w-full h-full bg-background rounded-[10px] flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-primary group-hover:rotate-12 transition-transform" />
-            </div>
-          </div>
-          <span className="flex items-center">
-            <JumpText text="Anahí" />
-            <span className="text-primary font-bold ml-1">.Dev</span>
+          <span className="w-7 h-7 rounded bg-[#991b1b] text-white font-mono text-xs font-bold flex items-center justify-center transition-transform group-hover:scale-105">
+            a.
+          </span>
+          <span className="flex items-center gap-1 tracking-tight">
+            <span>anahí</span>
+            <span className="font-mono text-zinc-400 font-normal">/dev</span>
           </span>
         </button>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex relative items-center gap-1 bg-secondary/20 backdrop-blur-sm p-1.5 rounded-full border border-border/50">
-          {navItems.map((item) => {
-            const Icon = item.icon
-            const isActive = activeSection === item.id
+        {/* Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className={`text-sm transition-colors ${
+                activeSection === link.id
+                  ? "text-zinc-900 font-semibold"
+                  : "text-zinc-600 hover:text-zinc-900 font-normal"
+              }`}
+            >
+              {link.label}
+            </button>
+          ))}
 
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 relative z-10 ${
-                  isActive
-                    ? "bg-primary/90 text-primary-foreground shadow-md shadow-primary/25 font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
-                }`}
-              >
-                <Icon className={`w-4 h-4 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                <JumpText text={item.label} />
-              </button>
-            )
-          })}
-        </div>
-
-        {/* Mobile Toggle Button */}
-        <div className="md:hidden">
+          {/* CTA: Hablemos ↗ */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 hover:bg-secondary/60 rounded-xl border border-border/50 transition-colors text-foreground"
-            aria-label="Toggle Navigation Menu"
+            onClick={() => scrollTo("contact")}
+            className="flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-zinc-800 bg-white border border-zinc-200 rounded-lg hover:border-[#991b1b] hover:text-[#991b1b] transition-all shadow-2xs"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <span>Hablemos</span>
+            <ArrowUpRight className="w-4 h-4" />
           </button>
-        </div>
+        </nav>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 text-zinc-600 hover:text-zinc-900 rounded-lg border border-zinc-200"
+          aria-label="Abrir menú"
+        >
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border px-6 py-4 space-y-2 shadow-2xl animate-in slide-in-from-top duration-300">
-          {navItems.map((item) => {
-            const Icon = item.icon
-            const isActive = activeSection === item.id
+        <div className="md:hidden bg-white border-b border-zinc-200 px-6 py-4 space-y-3 shadow-md animate-in slide-in-from-top-2">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className={`block w-full text-left py-2 text-sm ${
+                activeSection === link.id
+                  ? "text-[#991b1b] font-semibold"
+                  : "text-zinc-600 hover:text-zinc-900"
+              }`}
+            >
+              {link.label}
+            </button>
+          ))}
 
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`group w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${
-                  isActive
-                    ? "bg-primary text-primary-foreground font-semibold"
-                    : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
-                }`}
-              >
-                <Icon className="w-5 h-5" />
-                <JumpText text={item.label} />
-              </button>
-            )
-          })}
+          <button
+            onClick={() => scrollTo("contact")}
+            className="w-full mt-2 flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-medium text-white bg-[#991b1b] hover:bg-[#7f1d1d] rounded-lg transition-colors"
+          >
+            <span>Hablemos</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
         </div>
       )}
-    </nav>
+    </header>
   )
 }

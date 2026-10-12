@@ -3,144 +3,116 @@
 import { useState } from "react"
 import Link from "next/link"
 import { projects, Project } from "../lib/projects-data"
-import { FolderGit2, ExternalLink, Github, Sparkles, ArrowUpRight, Code2, Tag } from "lucide-react"
-import JumpText from "./ui/jump-text"
+import { ArrowUpRight } from "lucide-react"
 
-const categories = ["Todos", "Fullstack", "Backend", "Frontend", "Python / AI"]
+const categories = ["Todos", "Full Stack", "Backend", "Frontend"]
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("Todos")
 
   const filteredProjects = selectedCategory === "Todos"
     ? projects
-    : projects.filter((p) => p.category === selectedCategory || (selectedCategory === "Backend" && p.technologies.includes("NestJS")))
+    : projects.filter((p) => {
+        if (selectedCategory === "Full Stack") return p.category === "Fullstack"
+        if (selectedCategory === "Backend") return p.category === "Backend" || p.technologies.includes("NestJS")
+        if (selectedCategory === "Frontend") return p.category === "Frontend"
+        return true
+      })
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-background via-secondary/5 to-background relative overflow-hidden">
-      {/* Glow backgrounds */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+    <section id="projects" className="py-16 md:py-24 px-6 bg-white">
+      <div className="max-w-6xl mx-auto space-y-16">
+        {/* Tech Strip (Screenshot 2) */}
+        <div className="border-y border-zinc-200 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-xs">
+          <span className="text-zinc-400 uppercase tracking-wider font-medium">
+            TECNOLOGÍAS PRINCIPALES
+          </span>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-zinc-800 font-medium text-xs md:text-sm">
+            <span>NestJS</span>
+            <span>TypeScript</span>
+            <span>React / Next.js</span>
+            <span>PostgreSQL</span>
+            <span>MongoDB</span>
+            <span>n8n + IA</span>
+          </div>
+        </div>
 
-      <div className="max-w-6xl mx-auto relative z-10 space-y-12">
-        {/* Section Header */}
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider">
-            <FolderGit2 className="w-3.5 h-3.5" />
-            <span>Portafolio de Trabajos</span>
+        {/* Section 01 Header & Category Filter Tabs */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <span className="text-[#991b1b] font-mono text-xl md:text-2xl font-bold">01 /</span>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 font-mono">
+              Proyectos seleccionados
+            </h2>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Proyectos{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary animate-gradient">
-              Destacados
-            </span>
-          </h2>
-
-          <div className="w-20 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
-
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed pt-2">
-            Una selección de aplicaciones web Fullstack, motores de procesamiento y proyectos desarrollados con tecnologías modernas.
-          </p>
-        </div>
-
-        {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`group px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                selectedCategory === cat
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105"
-                  : "bg-card border border-border/70 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-secondary/40"
-              }`}
-            >
-              <JumpText text={cat} />
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="group rounded-2xl overflow-hidden bg-card/70 backdrop-blur-md border border-border/80 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1.5 flex flex-col justify-between"
-            >
-              {/* Image Preview Container */}
-              <div>
-                <div className="relative h-52 overflow-hidden bg-gradient-to-br from-primary/20 via-secondary/30 to-accent/20">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-
-                  {/* Category Pill Tag */}
-                  {project.category && (
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/80 backdrop-blur-md border border-border/60 text-xs font-bold text-primary">
-                      {project.category}
-                    </div>
-                  )}
-
-                  {/* Links top right overlay */}
-                  <div className="absolute top-3 right-3 flex gap-2">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-background/80 backdrop-blur-md text-foreground hover:text-primary hover:scale-110 transition-all"
-                        aria-label="Ver en GitHub"
-                      >
-                        <Github className="w-4 h-4" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                {/* Content Details */}
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-xs md:text-sm leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  {/* Technologies Badges */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {project.technologies.slice(0, 5).map((tech, techIdx) => (
-                      <span
-                        key={techIdx}
-                        className="px-2.5 py-1 rounded-md text-xs bg-primary/10 text-primary border border-primary/20 font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 5 && (
-                      <span className="px-2 py-1 rounded-md text-xs bg-secondary/40 text-muted-foreground font-medium">
-                        +{project.technologies.length - 5}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Card Footer Button */}
-              <div className="px-6 pb-6 pt-2">
-                <Link
-                  href={`/projects/${project.id}`}
-                  className="group w-full py-3 rounded-xl bg-secondary/40 hover:bg-primary border border-border/80 hover:border-primary text-foreground hover:text-primary-foreground font-semibold transition-all duration-300 text-center flex items-center justify-center gap-2 shadow-xs"
+          {/* Filter Pills */}
+          <div className="flex flex-wrap items-center gap-2">
+            {categories.map((cat) => {
+              const isActive = selectedCategory === cat
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-lg text-sm transition-all ${
+                    isActive
+                      ? "bg-zinc-100 text-zinc-900 font-semibold border border-zinc-300 shadow-2xs"
+                      : "text-zinc-500 hover:text-zinc-900 font-medium"
+                  }`}
                 >
-                  <JumpText text="Ver Detalle del Proyecto" />
+                  {cat}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* 3-Column Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project, idx) => {
+            const formattedIndex = project.numberCode || `/${String(idx + 1).padStart(2, "0")}`
+
+            return (
+              <Link
+                key={project.id}
+                href={`/projects/${project.id}`}
+                className="group rounded-xl bg-zinc-50/70 hover:bg-zinc-100/60 border border-zinc-200/90 hover:border-zinc-300 p-3.5 transition-all duration-200 flex flex-col justify-between shadow-2xs hover:shadow-xs"
+              >
+                <div>
+                  {/* Image container */}
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-zinc-200/60 border border-zinc-200 mb-4">
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                    />
+                  </div>
+
+                  {/* Top info line: number & tag */}
+                  <div className="flex items-center justify-between text-xs font-mono mb-2">
+                    <span className="text-zinc-400 font-medium">{formattedIndex}</span>
+                    <span className="text-zinc-500">{project.tagLine || project.category}</span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <div className="space-y-2">
+                    <h3 className="font-bold text-lg md:text-xl text-zinc-900 group-hover:text-[#991b1b] transition-colors leading-snug">
+                      {project.shortTitle || project.title}
+                    </h3>
+                    <p className="text-zinc-600 text-xs md:text-sm leading-relaxed line-clamp-2">
+                      {project.shortDescription || project.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Footer link line */}
+                <div className="pt-4 mt-4 border-t border-zinc-200/70 flex items-center justify-between text-sm font-medium text-zinc-800 group-hover:text-[#991b1b] transition-colors">
+                  <span>Ver proyecto</span>
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-              </div>
-            </div>
-          ))}
+                </div>
+              </Link>
+            )
+          })}
         </div>
       </div>
     </section>
