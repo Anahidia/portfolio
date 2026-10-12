@@ -5,7 +5,7 @@ import Link from "next/link"
 import { projects, Project } from "../lib/projects-data"
 import { ArrowUpRight } from "lucide-react"
 
-const categories = ["Todos", "Full Stack", "Backend", "Frontend"]
+const categories = ["Todos", "Full Stack", "Frontend", "Backend"]
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("Todos")
@@ -14,25 +14,27 @@ export default function Projects() {
     ? projects
     : projects.filter((p) => {
         if (selectedCategory === "Full Stack") return p.category === "Fullstack"
-        if (selectedCategory === "Backend") return p.category === "Backend" || p.technologies.includes("NestJS")
-        if (selectedCategory === "Frontend") return p.category === "Frontend"
+        if (selectedCategory === "Frontend") return p.category === "Frontend" || p.technologies.includes("React") || p.technologies.includes("Next.js")
+        if (selectedCategory === "Backend") return p.category === "Backend" || p.technologies.includes("NestJS") || p.technologies.includes("FastAPI")
         return true
       })
 
   return (
     <section id="projects" className="py-16 md:py-24 px-6 bg-white">
       <div className="max-w-6xl mx-auto space-y-16">
-        {/* Tech Strip (Screenshot 2) */}
+        {/* Tech Strip */}
         <div className="border-y border-zinc-200 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-xs">
           <span className="text-zinc-400 uppercase tracking-wider font-medium">
             TECNOLOGÍAS PRINCIPALES
           </span>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-zinc-800 font-medium text-xs md:text-sm">
+            <span>React</span>
+            <span>Next.js</span>
             <span>NestJS</span>
             <span>TypeScript</span>
-            <span>React / Next.js</span>
             <span>PostgreSQL</span>
             <span>MongoDB</span>
+            <span>TypeORM</span>
             <span>n8n + IA</span>
           </div>
         </div>

@@ -226,18 +226,19 @@ export const projects: Project[] = [
     id: "sistema-gestion-gimnasio",
     title: "Gym JustDoIt App – Sistema de Gestión de Gimnasios",
     shortTitle: "JustDoIt Gym",
-    tagLine: "Reservas & Membresías · Backend",
+    tagLine: "Reservas & Membresías · Full Stack",
     numberCode: "/05",
     shortDescription: "Gestión integral de clases, cupos en tiempo real, entrenadores y pagos con Stripe.",
     description:
-      "Sistema backend y frontend para la administración de clases, reservas con manejo de cupos, membresías, entrenadores y pasarela de pagos con Stripe.",
+      "Sistema de gestión integral para la administración de clases, reservas con manejo de cupos, membresías, perfiles de entrenadores y pasarela de pagos con Stripe.",
     fullDescription:
-      "Sistema de gestión integral para gimnasios desarrollado durante el Bootcamp de Henry con backend en NestJS y PostgreSQL.\n\n" +
-      "Funcionalidades:\n" +
+      "Sistema de gestión integral para gimnasios desarrollado durante el Bootcamp de Henry con arquitectura Full Stack (NestJS, TypeORM, PostgreSQL y Next.js/React).\n\n" +
+      "Funcionalidades Principales:\n" +
       "• Roles de Usuario, Asociado, Entrenador y Administrador para clases, reservas, membresías y métricas financieras.\n" +
-      "• Reservas de clases con actualización de cupos en tiempo real al confirmar o cancelar.\n" +
-      "• Creación, edición y eliminación de clases vinculando horarios y disponibilidad.\n" +
-      "• Perfiles de entrenadores vinculados a usuarios, autenticación JWT con bcrypt, seeders de reseñas y lógica de baneo.",
+      "• Lógica de reservas de clases con manejo de stock y notificaciones, actualizando cupos en tiempo real al confirmar o cancelar.\n" +
+      "• Creación, edición y eliminación de clases vinculando horarios y cupos disponibles.\n" +
+      "• Perfiles de entrenadores vinculados a su usuario y gestión de su información específica.\n" +
+      "• Login de usuarios con JWT y contraseñas seguras, seeder de reseñas y control de usuarios.",
     technologies: [
       "NestJS",
       "TypeScript",
@@ -262,7 +263,7 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/abogadatos/JustDoIt-Gym-Management-system",
     featured: false,
-    category: "Backend"
+    category: "Fullstack"
   },
   {
     id: "pasantia-nomadride",
@@ -289,7 +290,7 @@ export const projects: Project[] = [
     id: "pasantia-whaber",
     title: "Pasantía Full Stack – Whaber",
     shortTitle: "Whaber",
-    tagLine: "Plataforma SaaS · Frontend",
+    tagLine: "Plataforma SaaS · Full Stack",
     numberCode: "/07",
     shortDescription: "Mantenimiento, desarrollo de componentes en React y optimización de flujos de trabajo.",
     description:
@@ -304,7 +305,7 @@ export const projects: Project[] = [
     image: "/whaber.png",
     gallery: [],
     featured: false,
-    category: "Frontend"
+    category: "Fullstack"
   }
 ]
 

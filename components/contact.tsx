@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRight, Mail, Phone, MapPin, Github, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
+import { ArrowRight, Mail, Phone, MapPin, Github, Linkedin, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
@@ -63,7 +63,7 @@ export default function Contact() {
               </h2>
 
               <p className="text-zinc-600 text-base md:text-lg">
-                Abierta a roles Backend / Full Stack y nuevos proyectos.
+                Abierta a posiciones Full Stack y proyectos de desarrollo de software.
               </p>
             </div>
 
@@ -85,6 +85,16 @@ export default function Contact() {
               >
                 <Phone className="w-4 h-4 text-[#991b1b] shrink-0" />
                 <span>+54 3454044839 (WhatsApp)</span>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/anahi-diaz-181427278/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200/80 bg-zinc-50/60 hover:bg-zinc-100/80 hover:border-zinc-300 text-zinc-700 transition-colors"
+              >
+                <Linkedin className="w-4 h-4 text-[#991b1b] shrink-0" />
+                <span className="truncate">linkedin.com/in/anahi-diaz-181427278</span>
               </a>
 
               <a

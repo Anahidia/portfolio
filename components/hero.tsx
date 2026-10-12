@@ -45,12 +45,12 @@ export default function Hero({ setActiveSection }: HeroProps) {
             <div className="space-y-3 pt-2">
               <h2 className="text-xl md:text-2xl font-bold text-zinc-900">
                 Full Stack Developer.{" "}
-                <span className="text-[#991b1b] font-medium">Backend first.</span>
+                <span className="text-[#991b1b] font-medium">React · Next.js · NestJS.</span>
               </h2>
 
               <p className="text-zinc-600 text-base md:text-lg leading-relaxed max-w-xl">
-                Conecto datos, sistemas y personas. Desarrollo aplicaciones con bases sólidas y
-                automatizaciones que resuelven problemas reales.
+                Desarrollo aplicaciones web completas y escalables, integrando experiencias de usuario
+                intuitivas con arquitecturas sólidas y automatizaciones inteligentes.
               </p>
             </div>
 
@@ -88,30 +88,30 @@ export default function Hero({ setActiveSection }: HeroProps) {
               </div>
               <div className="space-y-1">
                 <p className="font-bold text-zinc-900 text-base">Anahí Mailén Díaz</p>
-                <p className="text-xs font-mono text-[#991b1b] font-medium">Full Stack · Backend Developer</p>
+                <p className="text-xs font-mono text-[#991b1b] font-medium">Full Stack Developer</p>
                 <p className="text-xs text-zinc-500">Concordia, Entre Ríos, Argentina</p>
               </div>
             </div>
 
-            {/* Code Box matching Screenshot 1 */}
+            {/* Code Box matching Profile Info */}
             <div className="border-l-2 border-[#991b1b] pl-5 py-2 font-mono text-xs md:text-sm space-y-3">
-              <p className="text-[#991b1b] font-medium">// un poco sobre mí</p>
+              <p className="text-[#991b1b] font-medium">// perfil profesional</p>
               <div className="space-y-1.5 text-zinc-700">
                 <p>
-                  <span className="text-zinc-500">enfoque: </span>
-                  <span className="text-zinc-900 font-semibold">&quot;backend &amp; automatización&quot;</span>
+                  <span className="text-zinc-500">rol: </span>
+                  <span className="text-zinc-900 font-semibold">&quot;Full Stack Developer&quot;</span>
                 </p>
                 <p>
                   <span className="text-zinc-500">stack: </span>
-                  <span className="text-zinc-900 font-semibold">[NestJS, TypeScript, React]</span>
+                  <span className="text-zinc-900 font-semibold">[React, Next.js, NestJS, TypeScript]</span>
                 </p>
                 <p>
                   <span className="text-zinc-500">ubicación: </span>
-                  <span className="text-zinc-900 font-semibold">&quot;Entre Ríos, Argentina&quot;</span>
+                  <span className="text-zinc-900 font-semibold">&quot;Concordia, Entre Ríos, Argentina&quot;</span>
                 </p>
                 <p>
-                  <span className="text-zinc-500">motivación: </span>
-                  <span className="text-zinc-900 font-semibold">&quot;construir, aprender, mejorar&quot;</span>
+                  <span className="text-zinc-500">enfoque: </span>
+                  <span className="text-zinc-900 font-semibold">&quot;soluciones web de punta a punta&quot;</span>
                 </p>
               </div>
             </div>

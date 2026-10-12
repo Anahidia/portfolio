@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Anahí Mailén Díaz | Full Stack Developer",
-  description: "Portafolio profesional de Anahí Mailén Díaz, desarrolladora Full Stack (Backend-focused) en NestJS, React, Next.js e Inteligencia Artificial.",
+  description: "Portafolio profesional de Anahí Mailén Díaz, Desarrolladora Full Stack con React, Next.js, NestJS, TypeScript, PostgreSQL, MongoDB e Inteligencia Artificial.",
   icons: {
     icon: "/icon.svg",
     apple: "/icon.svg",

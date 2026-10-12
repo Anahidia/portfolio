@@ -31,42 +31,68 @@ export default function About() {
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4 text-zinc-700 text-base md:text-lg leading-relaxed">
               <p>
-                Soy desarrolladora Full Stack con foco en Backend. Me gusta entender cómo funcionan
-                las cosas y transformar esa curiosidad en software útil. Combino experiencia con{" "}
-                <strong className="font-bold text-zinc-900">
-                  NestJS, TypeORM y bases de datos SQL / NoSQL
-                </strong>{" "}
-                con desarrollo de interfaces en React y Next.js.
+                Soy desarrolladora <strong className="font-bold text-zinc-900">Full Stack</strong> con sólida experiencia
+                en la creación de aplicaciones web completas. Combino el desarrollo de interfaces modernas e interactivas en{" "}
+                <strong className="font-bold text-zinc-900">React, Next.js y Tailwind CSS</strong> con la construcción
+                de arquitecturas sólidas y escalables en{" "}
+                <strong className="font-bold text-zinc-900">NestJS, Node.js, Express y TypeORM</strong>, respaldadas por bases
+                de datos SQL y NoSQL (<strong className="font-bold text-zinc-900">PostgreSQL y MongoDB</strong>).
               </p>
 
               <p className="text-zinc-600">
-                Mi recorrido incluye proyectos propios como UConnect, pasantías en Whaber y Nomad
-                Ride, y formación en Henry. Trabajo con una mirada práctica: resolver problemas,
-                colaborar y construir sistemas que puedan crecer.
+                Actualmente desarrollo <strong className="font-bold text-zinc-900">UConnect</strong>, un software de gestión
+                hotelera integral donde cubro tanto frontend como backend e implementé automatizaciones con{" "}
+                <strong className="font-bold text-zinc-900">n8n e inteligencia artificial</strong> para reservas vía WhatsApp.
+                Mi recorrido combina experiencia profesional en pasantías (<strong className="text-zinc-800 font-medium">Whaber</strong> y{" "}
+                <strong className="text-zinc-800 font-medium">Nomad Ride</strong>) con proyectos de envergadura construidos
+                durante el <strong className="text-zinc-800 font-medium">Bootcamp de Henry</strong>. Destaco por mi capacidad de resolución
+                de problemas, trabajo en equipo y comunicación efectiva para entregar soluciones eficientes y escalables.
               </p>
             </div>
 
-            {/* Skills Sub-Grid */}
-            <div className="grid sm:grid-cols-2 gap-8 pt-4 border-t border-zinc-100">
-              {/* Backend & Datos */}
-              <div className="space-y-2">
+            {/* Skills Sub-Grid aligned with CV Technologies */}
+            <div className="grid sm:grid-cols-2 gap-6 pt-4 border-t border-zinc-100">
+              {/* Frontend */}
+              <div className="space-y-2 p-3.5 rounded-xl bg-zinc-50/60 border border-zinc-100">
                 <h3 className="text-xs font-mono uppercase tracking-wider text-[#991b1b] font-semibold">
-                  Backend &amp; datos
+                  Frontend
                 </h3>
-                <div className="text-sm text-zinc-700 space-y-1">
-                  <p>NestJS · Node.js · Express · TypeORM</p>
-                  <p>PostgreSQL · MongoDB · Python</p>
+                <div className="text-xs md:text-sm text-zinc-700 space-y-1">
+                  <p className="font-medium text-zinc-900">React · Next.js · React Native</p>
+                  <p className="text-zinc-600">Redux · Context API · Angular · Tailwind CSS · Bootstrap · HTML · CSS</p>
                 </div>
               </div>
 
-              {/* Interfaces & Automatización */}
-              <div className="space-y-2">
+              {/* Backend */}
+              <div className="space-y-2 p-3.5 rounded-xl bg-zinc-50/60 border border-zinc-100">
                 <h3 className="text-xs font-mono uppercase tracking-wider text-[#991b1b] font-semibold">
-                  Interfaces &amp; automatización
+                  Backend
                 </h3>
-                <div className="text-sm text-zinc-700 space-y-1">
-                  <p>React · Next.js · TypeScript · Tailwind</p>
-                  <p>n8n · Inteligencia artificial · Git</p>
+                <div className="text-xs md:text-sm text-zinc-700 space-y-1">
+                  <p className="font-medium text-zinc-900">NestJS · Node.js · Express.js</p>
+                  <p className="text-zinc-600">TypeScript · TypeORM · JWT · bcrypt · Python · n8n</p>
+                </div>
+              </div>
+
+              {/* Bases de Datos */}
+              <div className="space-y-2 p-3.5 rounded-xl bg-zinc-50/60 border border-zinc-100">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#991b1b] font-semibold">
+                  Bases de datos
+                </h3>
+                <div className="text-xs md:text-sm text-zinc-700 space-y-1">
+                  <p className="font-medium text-zinc-900">PostgreSQL · MongoDB · SQL</p>
+                  <p className="text-zinc-600">Firebase · Modelado relacional y no relacional</p>
+                </div>
+              </div>
+
+              {/* Herramientas y otros */}
+              <div className="space-y-2 p-3.5 rounded-xl bg-zinc-50/60 border border-zinc-100">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#991b1b] font-semibold">
+                  Herramientas &amp; Metodologías
+                </h3>
+                <div className="text-xs md:text-sm text-zinc-700 space-y-1">
+                  <p className="font-medium text-zinc-900">Git · GitHub · n8n · Cloudinary</p>
+                  <p className="text-zinc-600">Jira · Trello · Axios · C++ · C# · PHP</p>
                 </div>
               </div>
             </div>
